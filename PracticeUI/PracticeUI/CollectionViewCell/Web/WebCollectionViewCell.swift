@@ -23,6 +23,11 @@ class WebCollectionViewCell: UICollectionViewCell {
             self.webView.loadRequest(request)
         }
     }
+
+	override func prepareForReuse() {
+		super.prepareForReuse()
+
+	}
 }
 
 extension WebCollectionViewCell: UIWebViewDelegate {

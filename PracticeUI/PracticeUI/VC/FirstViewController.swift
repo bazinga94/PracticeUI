@@ -14,7 +14,7 @@ class FirstViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if #available(iOS 13.0, *) {
             let statusBar = UIView(frame: UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero)
-            statusBar.backgroundColor = .white.withAlphaComponent(0.95)
+            statusBar.backgroundColor = UIColor.white.withAlphaComponent(0.95)
             UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.addSubview(statusBar)
             
         }
@@ -35,6 +35,7 @@ class FirstViewController: UIViewController {
     
     private func configureCollectionView() {
         let customCollectionViewFlowLayout = CustomCollectionViewFlowLayout(stickyIndexPath: IndexPath(row: 2, section: 0))
+		customCollectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionView.collectionViewLayout = customCollectionViewFlowLayout
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -99,7 +100,7 @@ extension FirstViewController: UICollectionViewDelegateFlowLayout {
         }
         
         if indexPath.row == 3 {
-            return CGSize(width: width, height: 2185)
+            return CGSize(width: width, height: 2175)
         }
         
         return CGSize(width: width, height: 100)
